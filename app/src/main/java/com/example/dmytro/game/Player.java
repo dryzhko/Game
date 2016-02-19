@@ -63,8 +63,8 @@ public class Player extends GameObject {
             dy = (int) (dya+=1.1);
         }
 
-        if(dy>28)dy=28;
-        if(dy<-28)dy=-28;
+        if(dy>20)dy=20;
+        if(dy<-20)dy=-20;
 
         y+=dy*2;
         dy=0;
