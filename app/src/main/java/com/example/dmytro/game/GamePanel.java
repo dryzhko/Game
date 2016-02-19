@@ -14,7 +14,7 @@ import android.view.SurfaceView;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 856; //dimensions, need to scale later
     public static final int HEIGHT = 480;
-    public static final int MOVESPEED = -5;
+    public static final int MOVESPEED = -10;
     private MainThread thread;
     private Background bg;
     private Player player;

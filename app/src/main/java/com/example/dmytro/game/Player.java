@@ -19,7 +19,8 @@ public class Player extends GameObject {
 
     public Player(Bitmap res, int w, int h, int numFrames){
         x=100;
-        y = GamePanel.HEIGHT/2;
+        //y = GamePanel.HEIGHT/2;
+        y= GamePanel.HEIGHT-100;
         dy = 0;
         score = 0;
         height = h;
@@ -35,7 +36,7 @@ public class Player extends GameObject {
         }
 
         animation.setFrames(image);
-        animation.setDelay(10);
+        animation.setDelay(50);
         startTime = System.nanoTime();
     }
 
@@ -62,8 +63,8 @@ public class Player extends GameObject {
             dy = (int) (dya+=1.1);
         }
 
-        if(dy>14)dy=14;
-        if(dy<-14)dy=-14;
+        if(dy>28)dy=28;
+        if(dy<-28)dy=-28;
 
         y+=dy*2;
         dy=0;
