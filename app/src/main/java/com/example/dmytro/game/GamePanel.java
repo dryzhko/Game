@@ -14,8 +14,10 @@ import android.view.SurfaceView;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 856; //dimensions, need to scale later
     public static final int HEIGHT = 480;
+    public static final int MOVESPEED = -5;
     private MainThread thread;
     private Background bg;
+    private Player player;
 
    //constructor
     public GamePanel(Context context)
@@ -52,7 +54,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         public void surfaceCreated(SurfaceHolder holder){
 
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background)); //instantiate background
-        bg.setVector(-5);
+        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.player), 100, 100, 5 );
 
         //start game loop when surface is created
         thread.setRunning(true);
@@ -63,12 +65,32 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public boolean onTouchEvent(MotionEvent event)
     {
+        if(event.getAction()==MotionEvent.ACTION_DOWN){
+            if(!player.getPlaying())
+            {
+                player.setPlaying(true);
+            }
+            player.setUp(true);
+            return true;
+        }
+
+        if(event.getAction()==MotionEvent.ACTION_UP)
+        {
+            player.setUp(false);
+            return true;
+        }
+
+
         return super.onTouchEvent(event);
     }
 
-    public void update(){
+    public void update() {
 
-        bg.update();
+        if (player.getPlaying())
+        {
+            bg.update();
+            player.update();
+        }
 
     }
     @Override
@@ -80,10 +102,13 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             final int savedState = canvas.save(); //before scaling
             canvas.scale(scaleFactorx, scaleFactory); //scaling happens
             bg.draw(canvas);
+            player.draw(canvas);
             canvas.restoreToCount(savedState); //return to saved state to avoid infinite scaling
 
         }
 
 
     }
+
+
 }
