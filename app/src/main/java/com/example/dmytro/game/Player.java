@@ -18,7 +18,7 @@ public class Player extends GameObject {
     private long startTime; //used to increment score
 
     public Player(Bitmap res, int w, int h, int numFrames){
-        x=100;
+        x=300;
         //y = GamePanel.HEIGHT/2;
         y= GamePanel.HEIGHT-100;
         dy = 0;
@@ -36,7 +36,7 @@ public class Player extends GameObject {
         }
 
         animation.setFrames(image);
-        animation.setDelay(50);
+        animation.setDelay(33);
         startTime = System.nanoTime();
     }
 
@@ -71,7 +71,7 @@ public class Player extends GameObject {
 
             }
 
-            
+
         }
         else
         {

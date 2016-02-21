@@ -14,10 +14,11 @@ import android.view.SurfaceView;
 public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     public static final int WIDTH = 856; //dimensions, need to scale later
     public static final int HEIGHT = 480;
-    public static final int MOVESPEED = -10;
+    public static final int MOVESPEED = -12;
     private MainThread thread;
     private Background bg;
     private Player player;
+    private Ghost ghost;
 
    //constructor
     public GamePanel(Context context)
@@ -58,6 +59,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.background)); //instantiate background
         player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.player), 100, 100, 5 );
+        ghost = new Ghost(BitmapFactory.decodeResource(getResources(), R.drawable.ghost),100,100,5);
 
         //start game loop when surface is created
         thread.setRunning(true);
@@ -93,6 +95,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         {
             bg.update();
             player.update();
+            ghost.update();
         }
 
     }
@@ -106,6 +109,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             canvas.scale(scaleFactorx, scaleFactory); //scaling happens
             bg.draw(canvas);
             player.draw(canvas);
+            ghost.draw(canvas);
             canvas.restoreToCount(savedState); //return to saved state to avoid infinite scaling
 
         }
