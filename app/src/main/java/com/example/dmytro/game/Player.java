@@ -47,6 +47,7 @@ public class Player extends GameObject {
 
     public void update()
     {
+
         long elapsed = (System.nanoTime()-startTime)/1000000;
         if(elapsed>100)
         {
@@ -56,11 +57,34 @@ public class Player extends GameObject {
         animation.update();
 
         if(up){
-            dy -=1;
+
+
+            if(y== GamePanel.HEIGHT/2)
+            {
+
+
+                up=false;
+            }
+            else
+            {
+                dy -=10;
+
+            }
+
+            
         }
         else
         {
-            dy +=1;
+
+
+            if(y== GamePanel.HEIGHT-100)
+            {
+                dy=0;
+            }
+            else
+            {
+                dy +=10;
+            }
         }
 
         if(dy>20)dy=20;
