@@ -31,7 +31,7 @@ public class Ghost extends GameObject {
         }
 
         animation.setFrames(image);
-        animation.setDelay(50);
+        animation.setDelay(100);
 
     }
 
