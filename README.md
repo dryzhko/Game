@@ -1,5 +1,4 @@
 # Game
-
-A game for the android operating system. Run through the forest, avoiding obstacles while being chased by a ghost.
-
+Unreleased work in progress
+Working on side-scrolling Android game where you run through the forest and avoid obstacles while being chased by a ghost
 
